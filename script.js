@@ -1,6 +1,6 @@
 let users = [
    {name: '1', atrChance: 100},
-//    {name: '2', atrChance: 100},
+   {name: '2', atrChance: 100},
 //    {name: '3', atrChance: 100},
 //    {name: '4', atrChance: 100},
 //    {name: '5', atrChance: 100},
@@ -23,7 +23,6 @@ var firstInc
 function decAtrChance (index) {
     users[index].atrChance = users[index].atrChance - 10
 
-
     stopTimeout(firstInc)
     firstInc = setTimeout(()=> incAtrChance(index), 6000)
 }
@@ -43,9 +42,23 @@ function getRandomUser () {
     decAtr = 10
     incAtr = 5
 
-    index = Math.floor(Math.random()*(max-min)+min);
-    compareAtr = Math.floor(Math.random()*(101-0)+0);
-    
+    function getCompAtr ()  {
+        compareAtr = Math.floor(Math.random()*(101-0)+0);
+        return compareAtr
+    }
+    getCompAtr()
+
+    function getIndex() {
+        index = Math.floor(Math.random()*(max-min)+min);
+        return index
+    }
+    getIndex()
+
+    while (compareAtr >= users[index].atrChance) {
+        getCompAtr()
+        getIndex()
+    }
+
     console.log("inex is "+index);
     console.log(users[index]);
 

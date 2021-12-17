@@ -53,11 +53,13 @@ function getRandomUser () {
         return index
     }
     getIndex()
-
-    while (compareAtr >= users[index].atrChance) {
+    
+    i=0
+    do {
         getCompAtr()
         getIndex()
-    }
+        i++
+    } while (compareAtr >= users[index].atrChance || i<=max)
 
     console.log("inex is "+index);
     console.log(users[index]);
